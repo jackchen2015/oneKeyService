@@ -8,9 +8,9 @@ import java.sql.Statement;
 
 public class DBUtil {
 	  //这里可以设置数据库名称
-    private final static String URL = "jdbc:sqlserver://10.10.10.10:1433;DatabaseName=IPCDB";
+    private final static String URL = "jdbc:sqlserver://xx.xx.xx.xx:1433;DatabaseName=IPCDB";
     private static final String USER="sa";
-    private static final String PASSWORD="Huawei12#$";
+    private static final String PASSWORD="1234QWER";
     
     private static Connection conn=null;
     //静态代码块（将加载驱动、连接数据库放入静态块中）
