@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://oneKeyService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://oneKeyService" xmlns:intf="http://oneKeyService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://oneKeyService" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getUserByMacAddr">
+    <complexType>
+     <sequence>
+      <element name="macAddr" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getUserByMacAddrResponse">
+    <complexType>
+     <sequence>
+      <element name="getUserByMacAddrReturn" type="impl:UserInfo"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="UserInfo">
+    <sequence>
+     <element name="macAddr" nillable="true" type="xsd:string"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="userId" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getUserByMacAddrResponse">
+
+      <wsdl:part element="impl:getUserByMacAddrResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getUserByMacAddrRequest">
+
+      <wsdl:part element="impl:getUserByMacAddr" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="OneKeyService">
+
+      <wsdl:operation name="getUserByMacAddr">
+
+         <wsdl:input message="impl:getUserByMacAddrRequest" name="getUserByMacAddrRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getUserByMacAddrResponse" name="getUserByMacAddrResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="OneKeyServiceSoapBinding" type="impl:OneKeyService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getUserByMacAddr">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getUserByMacAddrRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getUserByMacAddrResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="OneKeyServiceService">
+
+      <wsdl:port binding="impl:OneKeyServiceSoapBinding" name="OneKeyService">
+
+         <wsdlsoap:address location="http://localhost:8080/oneKeyService/services/OneKeyService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

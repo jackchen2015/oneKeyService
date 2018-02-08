@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from OneKeyServiceService WSDL service -->
+
+  <service name="OneKeyService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://oneKeyService"/>
+      <parameter name="wsdlServiceElement" value="OneKeyServiceService"/>
+      <parameter name="schemaQualified" value="http://oneKeyService"/>
+      <parameter name="wsdlServicePort" value="OneKeyService"/>
+      <parameter name="className" value="oneKeyService.OneKeyService"/>
+      <parameter name="wsdlPortType" value="OneKeyService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://oneKeyService" xmlns:retNS="http://oneKeyService" xmlns:rtns="http://oneKeyService" name="getUserByMacAddr" qname="operNS:getUserByMacAddr" returnQName="retNS:getUserByMacAddrReturn" returnType="rtns:UserInfo" soapAction="">
+        <parameter xmlns:pns="http://oneKeyService" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:macAddr" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="getUserByMacAddr"/>
+
+      <typeMapping xmlns:ns="http://oneKeyService" qname="ns:UserInfo" type="java:oneKeyService.UserInfo" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>
